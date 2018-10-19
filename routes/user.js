@@ -14,4 +14,17 @@ router.post("/register", async (req, resp) => {
     resp.success(user);
 });
 
+
+/**
+ * 根据用户名删除用户
+ * url : DELETE, http://localhost:8080/username
+ * @param username 用户名
+ */
+router.delete("/:username", async (req, resp) => {
+
+    await userService.deleteUserByUsername(req.params.username);
+
+    resp.success();
+});
+
 module.exports = router;

@@ -22,9 +22,14 @@ app.use(bodyParser.json());
 
 // 注册自定义的中间件
 app.use(require('./middleware/rest_md'));
+app.use(require("./middleware/token_md"));// 校验用户的登录状态
+app.use(require("./middleware/permission_md"));// 校验权限
 
 //注册路由
-app.use("/user", require("./routes/user"))
+app.use("/user", require("./routes/user"));
+app.use("/category", require("./routes/category"));
+app.use("/product", require("./routes/product"));
+app.use("/order", require("./routes/order"));
 
 // 异常处理中间件
 app.use((err, req, resp, next) => {

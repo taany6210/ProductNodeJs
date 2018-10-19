@@ -45,6 +45,20 @@ router.get("/:username", async (request, response) => {
         response.fail(`用户名为${username}的用户不存在`);
     }
 
-})
+});
+
+/**
+ * 用户登录,返回的数据是token
+ * url : POST , http://localhost:8080/
+ * @param user {username:zhangsan,password:123}
+
+ */
+router.post("/login", async (request, response) => {
+
+    let token = await userService.login(request.body);
+
+    response.success(token);
+
+});
 
 module.exports = router;

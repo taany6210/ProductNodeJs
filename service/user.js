@@ -30,7 +30,7 @@ async function addUser(user) {
 async function deleteUserByUsername(username) {
     await isExistByUsername(username);
     const result = await userDao.deleteOne({username: username});
-    if (result.n != 1) {
+    if (result.n !== 1) {
         throw Error("删除失败")
     }
 }
@@ -55,5 +55,6 @@ async function findUserByUsername(username) {
 
 module.exports = {
     addUser,
-    deleteUserByUsername
+    deleteUserByUsername,
+    findUserByUsername
 };

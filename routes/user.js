@@ -27,4 +27,24 @@ router.delete("/:username", async (req, resp) => {
     resp.success();
 });
 
+/**
+ * 根据用户名查询用户
+ * url : GET , http://localhost:8080/username
+ * @param username : 用户名, zhangsan
+ */
+router.get("/:username", async (request, response) => {
+    // 获取参数
+    let username = request.params.username;
+    // 执行查询
+    let result = await userService.findUserByUsername(username);
+    // 查询成功,返回数据
+    if (result) {
+        response.success(result);
+    } else {
+        // 查询失败,通知用户原因
+        response.fail(`用户名为${username}的用户不存在`);
+    }
+
+})
+
 module.exports = router;

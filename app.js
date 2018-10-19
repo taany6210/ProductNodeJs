@@ -28,6 +28,7 @@ app.use("/user", require("./routes/user"))
 
 // 异常处理中间件
 app.use((err, req, resp, next) => {
+    console.log("error 捕获到了");
     resp.fail(err.toString(),"");
 });
 

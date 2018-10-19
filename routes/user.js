@@ -1,9 +1,17 @@
 const router = require("express").Router();
 
-router.get("/register", (req, resp) => {
+const userService = require("../service/user");
+
+router.post("/register", async (req, resp) => {
     console.log("register");
 
-    resp.success(null);
+    let user = await userService.addUser(req.body);
+
+    if (!user) {
+        throw Error("用户名已存在");
+    }
+
+    resp.success(user);
 });
 
 module.exports = router;

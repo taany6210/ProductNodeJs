@@ -1,5 +1,5 @@
 module.exports = function (req, resp, next) {
-    resp.success = (data = null) => {
+    resp.success = (data) => {
         resp.send({
             code: 0,
             msg: "success",
